@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "intctrl.h": "c",
+        "intctrl_types.h": "c"
+    }
+}
