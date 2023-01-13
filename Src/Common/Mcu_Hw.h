@@ -19,6 +19,7 @@
 /**********************************************************************************************************************
  *  GLOBAL DATA TYPES AND STRUCTURES
  *********************************************************************************************************************/
+// Bit field
 typedef struct 
 {
     uint32 VECACT   :8;
@@ -39,8 +40,8 @@ typedef struct
 }INTCTRL_BF;
 typedef union 
 {
-    uint32 R;
-    INTCTRL_BF B;
+    uint32 R; // Register
+    INTCTRL_BF B; // Bit
 }INTCTRL_Tag;
 
 
@@ -51,6 +52,7 @@ typedef union
 #define CORTEXM4_PERI_BASE_ADDRESS             0xE000E000
 #define APINT                                  *((volatile uint32*)(CORTEXM4_PERI_BASE_ADDRESS+0xD0C))
 #define INTCTRL                                *((volatile INTCTRL_Tag*)(CORTEXM4_PERI_BASE_ADDRESS+0xD04))
+// Example: INTCTRL.R if want to access full register, INTCTRL.B.VECPEND = write 4 bits
 
 /**********************************************************************************************************************
  *  GLOBAL DATA PROTOTYPES

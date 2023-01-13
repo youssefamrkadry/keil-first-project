@@ -33,11 +33,12 @@ typedef enum
 {
     VTABLE = 10,
     SYSHNDCNTRL = 20
-
-
-
 }IntCtrl_InterruptType;
 
+typedef enum
+{
+    XXX=4,XXY,XYY,YYY
+}Group_SubgroupType;
  
 #endif  /* INTCTRL_TYPES_H */
 
