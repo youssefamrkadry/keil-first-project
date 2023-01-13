@@ -5,7 +5,7 @@
  *         File:  Mcu_Hw.h
  *       Module:  Mcu_Hw
  *
- *  Description:  header file for Registers definition    
+ *  Description:  header file for Registers definition  (Microcontroller Hardware)  
  *  
  *********************************************************************************************************************/
 #ifndef MCU_HW_H
