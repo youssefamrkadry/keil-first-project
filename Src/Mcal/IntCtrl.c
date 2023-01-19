@@ -44,7 +44,7 @@ static void IntCtrl_DisableInterrupt(IntCtrl_InterruptType IntrNum);
 
 /******************************************************************************
 * \Syntax          : void SetPriorityGrouping(void)                                      
-* \Description     : Initialize APINT with the configured group-subgroup priority                                
+* \Description     : Configure Grouping\SubGrouping System in APINT register in SCB                                
 *                                                                             
 * \Sync\Async      : Synchronous                                               
 * \Reentrancy      : Reentrant                                             
@@ -90,7 +90,9 @@ void SetPriorityGrouping(uint8 priority_grouping)
 void IntCrtl_Init(void)
 {
 
-	/*TODO Configure Grouping\SubGrouping System in APINT register in SCB*/
+    uint8 u8_idx = 0;
+
+    /*Configure Grouping\SubGrouping System in APINT register in SCB*/
     SetPriorityGrouping(GROUP_SUBGROUP_CONFIG);
     
     /*TODO : Assign Group\Subgroup priority in NVIC_PRIx Nvic and SCB_SYSPRIx Registers*/  

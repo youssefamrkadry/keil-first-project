@@ -31,7 +31,12 @@
 /**********************************************************************************************************************
  *  GLOBAL DATA TYPES AND STRUCTURES
  *********************************************************************************************************************/
-
+typedef struct 
+{
+    IntCtrl_InterruptType type;
+    uint8 group_priority;
+    uint8 subgroup_priority;
+}IntCtrl_Interrupt_st;
 
  
 #endif  /* INTCTRL_CFG_H */
