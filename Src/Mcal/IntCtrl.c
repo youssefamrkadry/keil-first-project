@@ -73,12 +73,12 @@ void SetPriorityGrouping(Group_SubgroupType priority_grouping)
 }
 
 /******************************************************************************
-* \Syntax          : void SetPriorityGrouping(void)                                      
+* \Syntax          : void IntCtrl_SetPriority(void)                                      
 * \Description     : Assign Group\Subgroup priority in NVIC_PRIx Nvic Register                                
 *                                                                             
 * \Sync\Async      : Synchronous                                               
 * \Reentrancy      : Non Reentrant                                             
-* \Parameters (in) : priority_grouping                     
+* \Parameters (in) : IntrNum, u8_IntPriority                      
 * \Parameters (out): None                                                      
 * \Return value:   : None
 *******************************************************************************/
@@ -86,6 +86,36 @@ void IntCtrl_SetPriority(IntCtrl_InterruptType IntrNum, uint8 u8_IntPriority)
 {
     PRIx(IntrNum) &= ~(7<<((8*((IntrNum%4)+1))-3));
     PRIx(IntrNum) |= (u8_IntPriority<<((8*((IntrNum%4)+1))-3));
+}
+
+/******************************************************************************
+* \Syntax          : void IntCtrl_EnableInterrupt(void)                                      
+* \Description     : Enable based on user configurations in NVIC_ENx Register                                
+*                                                                             
+* \Sync\Async      : Synchronous                                               
+* \Reentrancy      : Non Reentrant                                             
+* \Parameters (in) : IntrNum                     
+* \Parameters (out): None                                                      
+* \Return value:   : None
+*******************************************************************************/
+static void IntCtrl_EnableInterrupt(IntCtrl_InterruptType IntrNum)
+{
+    ENx(IntrNum) |= (1<<(IntrNum%32));
+}
+
+/******************************************************************************
+* \Syntax          : void IntCtrl_DisableInterrupt(void)                                      
+* \Description     : Disable based on user configurations in NVIC_ENx Register                                
+*                                                                             
+* \Sync\Async      : Synchronous                                               
+* \Reentrancy      : Non Reentrant                                             
+* \Parameters (in) : IntrNum                     
+* \Parameters (out): None                                                      
+* \Return value:   : None
+*******************************************************************************/
+static void IntCtrl_DisableInterrupt(IntCtrl_InterruptType IntrNum)
+{
+    DISx(IntrNum) |= (1<<(IntrNum%32));
 }
 
 
