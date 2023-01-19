@@ -30,7 +30,7 @@
  *  GLOBAL DATA
  *********************************************************************************************************************/
 // User configurations container
-extern interrupt_table_cfg;
+// extern interrupt_table_cfg;
 /**********************************************************************************************************************
  *  LOCAL FUNCTION PROTOTYPES
  *********************************************************************************************************************/
@@ -52,7 +52,7 @@ static void IntCtrl_DisableInterrupt(IntCtrl_InterruptType IntrNum);
 * \Parameters (out): None                                                      
 * \Return value:   : None
 *******************************************************************************/
-void SetPriorityGrouping(uint8 priority_grouping)
+void SetPriorityGrouping(Group_SubgroupType priority_grouping)
 {
     // Reset APINT with VECTKEY before setting the PRIGROUP bits
     switch (priority_grouping)
@@ -90,18 +90,41 @@ void SetPriorityGrouping(uint8 priority_grouping)
 void IntCrtl_Init(void)
 {
 
-    uint8 u8_idx = 0;
-
     /*Configure Grouping\SubGrouping System in APINT register in SCB*/
     SetPriorityGrouping(GROUP_SUBGROUP_CONFIG);
     
-    /*TODO : Assign Group\Subgroup priority in NVIC_PRIx Nvic and SCB_SYSPRIx Registers*/  
+    for (uint8 u8_idx = 0; u8_idx < CFG_INT_NUM; u8_idx++)
+    {
+        uint8 IntrPriority = 0;
+        
+        uint8 GroupPriority = interrupt_table_cfg[u8_idx].group_priority;
+        uint8 SubgroupPriority = interrupt_table_cfg[u8_idx].subgroup_priority;
 
+        uint8 IntNum = interrupt_table_cfg[u8_idx].type;
 
-	/*TODO : Enable\Disable based on user configurations in NVIC_ENx and SCB_Sys Registers */
+        switch (GROUP_SUBGROUP_CONFIG)
+        {
+        case XXY: 
+            IntrPriority = ((GroupPriority & 0x03)<<1) | (SubgroupPriority & 0x01);
+            break;
+        case XYY:
+            IntrPriority = ((GroupPriority & 0x01)<<2) | (SubgroupPriority & 0x03);
+            break;
+        case YYY:
+            IntrPriority = SubgroupPriority & 0x07;
+            break;
+        default:
+            IntrPriority = GroupPriority & 0x07;
+            break;
+        }
 
+        /*Assign Group\Subgroup priority in NVIC_PRIx Nvic and SCB_SYSPRIx Registers*/
+        IntCtrl_SetPriority(IntNum, IntrPriority);
 
-	
+        /*Enable\Disable based on user configurations in NVIC_ENx and SCB_Sys Registers */
+        IntCtrl_EnableInterrupt(IntNum);
+
+    }
 
 }
 
