@@ -72,30 +72,20 @@ void SetPriorityGrouping(Group_SubgroupType priority_grouping)
     }
 }
 
+/******************************************************************************
+* \Syntax          : void SetPriorityGrouping(void)                                      
+* \Description     : Assign Group\Subgroup priority in NVIC_PRIx Nvic Register                                
+*                                                                             
+* \Sync\Async      : Synchronous                                               
+* \Reentrancy      : Non Reentrant                                             
+* \Parameters (in) : priority_grouping                     
+* \Parameters (out): None                                                      
+* \Return value:   : None
+*******************************************************************************/
 void IntCtrl_SetPriority(IntCtrl_InterruptType IntrNum, uint8 u8_IntPriority)
 {
-    uint8 offset = IntrNum % 4;
-    switch (offset)
-    {
-    case 0: 
-        PRIx(IntrNum) &= ~(7<<(5));
-        PRIx(IntrNum) |= (u8_IntPriority<<(5));
-        break;
-    case 1:
-        PRIx(IntrNum) &= ~(7<<(13));
-        PRIx(IntrNum) |= (u8_IntPriority<<(13));
-        break;
-    case 2:
-        PRIx(IntrNum) &= ~(7<<(21));
-        PRIx(IntrNum) |= (u8_IntPriority<<(21));
-        break;
-    case 3:
-        PRIx(IntrNum) &= ~(7<<(29));
-        PRIx(IntrNum) |= (u8_IntPriority<<(29));
-        break;
-    default:
-        break;
-    }
+    PRIx(IntrNum) &= ~(7<<((8*((IntrNum%4)+1))-3));
+    PRIx(IntrNum) |= (u8_IntPriority<<((8*((IntrNum%4)+1))-3));
 }
 
 
