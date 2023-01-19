@@ -30,7 +30,7 @@
  *  GLOBAL DATA
  *********************************************************************************************************************/
 // User configurations container
-
+extern 
 /**********************************************************************************************************************
  *  LOCAL FUNCTION PROTOTYPES
  *********************************************************************************************************************/
@@ -42,6 +42,35 @@ static void IntCtrl_DisableInterrupt(IntCtrl_InterruptType IntrNum);
  *  LOCAL FUNCTIONS
  *********************************************************************************************************************/
 
+/******************************************************************************
+* \Syntax          : void SetPriorityGrouping(void)                                      
+* \Description     : Initialize APINT with the configured group-subgroup priority                                
+*                                                                             
+* \Sync\Async      : Synchronous                                               
+* \Reentrancy      : Reentrant                                             
+* \Parameters (in) : priority_grouping                     
+* \Parameters (out): None                                                      
+* \Return value:   : None
+*******************************************************************************/
+void SetPriorityGrouping(uint8 priority_grouping)
+{
+    // Reset APINT with VECTKEY before setting the PRIGROUP bits
+    switch (priority_grouping)
+    {
+    case XXY: 
+        APINT = 0xFA050000|(5<<(8));
+        break;
+    case XYY:
+        APINT = 0xFA050000|(6<<(8));
+        break;
+    case YYY:
+        APINT = 0xFA050000|(7<<(8));
+        break;
+    default:
+        APINT = 0xFA050000|(4<<(8));
+        break;
+    }
+}
 /**********************************************************************************************************************
  *  GLOBAL FUNCTIONS
  *********************************************************************************************************************/
@@ -62,7 +91,7 @@ void IntCrtl_Init(void)
 {
 
 	/*TODO Configure Grouping\SubGrouping System in APINT register in SCB*/
-    APINT = 0xFA05|0x00001234;
+    SetPriorityGrouping(GROUP_SUBGROUP_CONFIG);
     
     /*TODO : Assign Group\Subgroup priority in NVIC_PRIx Nvic and SCB_SYSPRIx Registers*/  
 
