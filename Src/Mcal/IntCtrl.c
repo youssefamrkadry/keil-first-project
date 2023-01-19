@@ -35,7 +35,9 @@
  *  LOCAL FUNCTION PROTOTYPES
  *********************************************************************************************************************/
 static void SetPriorityGrouping(Group_SubgroupType PriorityGrouping);
-
+static void IntCtrl_SetPriority(IntCtrl_InterruptType IntrNum, uint8 u8_IntPriority);
+static void IntCtrl_EnableInterrupt(IntCtrl_InterruptType IntrNum);
+static void IntCtrl_DisableInterrupt(IntCtrl_InterruptType IntrNum);
 /**********************************************************************************************************************
  *  LOCAL FUNCTIONS
  *********************************************************************************************************************/
