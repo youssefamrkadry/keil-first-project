@@ -143,7 +143,7 @@ void IntCrtl_Init(void)
     /*Configure Grouping\SubGrouping System in APINT register in SCB*/
     SetPriorityGrouping(GROUP_SUBGROUP_CONFIG);
     
-    for (u8_idx = 0; u8_idx < CFG_INT_NUM; u8_idx++)
+    for (u8_idx = 0; u8_idx < interrupts_number; u8_idx++)
     {
         uint8 IntrPriority = 0;
         

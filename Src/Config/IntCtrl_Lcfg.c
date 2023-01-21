@@ -33,6 +33,8 @@ IntCtrl_Interrupt_st interrupt_table_cfg[] = {
     {GPIO_PORTB_INT, 0, 0}
     };
 
+int interrupts_number = sizeof(interrupt_table_cfg) / sizeof(IntCtrl_Interrupt_st);
+
 /**********************************************************************************************************************
  *  END OF FILE: IntCtrl_Lcfg.c
  *********************************************************************************************************************/

@@ -23,9 +23,6 @@
 // Choose between XXX, XXY, XYY and YYY where X is the group and X is the subgroup
 #define GROUP_SUBGROUP_CONFIG XXX
 
-// Number if interrupts you will use
-#define CFG_INT_NUM 2
-
 /**********************************************************************************************************************
  *  GLOBAL FUNCTION MACROS
  *********************************************************************************************************************/
@@ -42,6 +39,7 @@ typedef struct
 }IntCtrl_Interrupt_st;
 
 extern IntCtrl_Interrupt_st interrupt_table_cfg[];
+extern int interrupts_number;
 
 #endif  /* INTCTRL_CFG_H */
 
