@@ -34,7 +34,7 @@ IntCtrl_Interrupt_st interrupt_table_cfg[] = {
     {UART0_INT, 3, 0}
     };
 
-int interrupts_number = sizeof(interrupt_table_cfg) / sizeof(IntCtrl_Interrupt_st);
+uint8 interrupts_number = sizeof(interrupt_table_cfg) / sizeof(IntCtrl_Interrupt_st);
 
 /**********************************************************************************************************************
  *  END OF FILE: IntCtrl_Lcfg.c
