@@ -138,10 +138,12 @@ static void IntCtrl_DisableInterrupt(IntCtrl_InterruptType IntrNum)
 void IntCrtl_Init(void)
 {
 
+    uint8 u8_idx;
+
     /*Configure Grouping\SubGrouping System in APINT register in SCB*/
     SetPriorityGrouping(GROUP_SUBGROUP_CONFIG);
     
-    for (uint8 u8_idx = 0; u8_idx < CFG_INT_NUM; u8_idx++)
+    for (u8_idx = 0; u8_idx < CFG_INT_NUM; u8_idx++)
     {
         uint8 IntrPriority = 0;
         
