@@ -24,7 +24,7 @@
 #define GROUP_SUBGROUP_CONFIG XXX
 
 // Number if interrupts you will use
-#define CFG_INT_NUM = 2
+#define CFG_INT_NUM 2
 
 /**********************************************************************************************************************
  *  GLOBAL FUNCTION MACROS
