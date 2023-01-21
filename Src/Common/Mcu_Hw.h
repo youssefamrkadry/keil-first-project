@@ -53,6 +53,8 @@ typedef union
 #define INTCTRL                                *((volatile INTCTRL_Tag*)(CORTEXM4_PERI_BASE_ADDRESS+0xD04))
 // Example: INTCTRL.R if want to access full register, INTCTRL.B.VECPEND = write 4 bits
 
+#define GPIO_BASE_ADDRESS_AHB                  0x40058000
+
 /**********************************************************************************************************************
  *  GLOBAL DATA PROTOTYPES
  *********************************************************************************************************************/
