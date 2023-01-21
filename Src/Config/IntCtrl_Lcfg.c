@@ -28,7 +28,7 @@
  *********************************************************************************************************************/
 
 // {interrupt type, group priority, subgroup priority}
-interrupt_table_cfg = {
+IntCtrl_Interrupt_st interrupt_table_cfg[] = {
     {GPIO_PORTA_INT, 0, 0},
     {GPIO_PORTB_INT, 0, 0}
     };

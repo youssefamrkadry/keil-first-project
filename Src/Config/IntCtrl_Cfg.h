@@ -41,7 +41,7 @@ typedef struct
     uint8 subgroup_priority;
 }IntCtrl_Interrupt_st;
 
-IntCtrl_Interrupt_st interrupt_table_cfg[CFG_INT_NUM];
+extern IntCtrl_Interrupt_st interrupt_table_cfg[];
 
 #endif  /* INTCTRL_CFG_H */
 
