@@ -58,16 +58,16 @@ void SetPriorityGrouping(Group_SubgroupType priority_grouping)
     switch (priority_grouping)
     {
     case XXY: 
-        APINT = 0xFA050000|(5<<(8));
+        APINT = 0x05FA0000|(5<<(8));
         break;
     case XYY:
-        APINT = 0xFA050000|(6<<(8));
+        APINT = 0x05FA0000|(6<<(8));
         break;
     case YYY:
-        APINT = 0xFA050000|(7<<(8));
+        APINT = 0x05FA0000|(7<<(8));
         break;
     default:
-        APINT = 0xFA050000|(4<<(8));
+        APINT = 0x05FA0000|(4<<(8));
         break;
     }
 }

@@ -21,7 +21,7 @@
  *********************************************************************************************************************/
 
 // Choose between XXX, XXY, XYY and YYY where X is the group and X is the subgroup
-#define GROUP_SUBGROUP_CONFIG XXX
+#define GROUP_SUBGROUP_CONFIG XXY
 
 /**********************************************************************************************************************
  *  GLOBAL FUNCTION MACROS

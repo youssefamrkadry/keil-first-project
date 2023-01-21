@@ -30,7 +30,8 @@
 // {interrupt type, group priority, subgroup priority}
 IntCtrl_Interrupt_st interrupt_table_cfg[] = {
     {GPIO_PORTA_INT, 0, 0},
-    {GPIO_PORTB_INT, 0, 0}
+    {GPIO_PORTB_INT, 2, 1},
+    {UART0_INT, 3, 0}
     };
 
 int interrupts_number = sizeof(interrupt_table_cfg) / sizeof(IntCtrl_Interrupt_st);
