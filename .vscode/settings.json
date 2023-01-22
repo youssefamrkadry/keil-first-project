@@ -4,6 +4,7 @@
         "intctrl_types.h": "c",
         "std_types.h": "c",
         "mcu_hw.h": "c",
-        "platform_types.h": "c"
+        "platform_types.h": "c",
+        "port_cfg.h": "c"
     }
 }
