@@ -65,6 +65,30 @@ Dio_LevelType Dio_ReadChannel(Dio_ChannelType ChannelId);
 void Dio_WriteChannel(Dio_ChannelType ChannelId, Dio_LevelType Level);
 
 /******************************************************************************
+* \Syntax          : Dio_LevelType Dio_ReadChannelMasked(Dio_ChannelType ChannelId)                                      
+* \Description     : read a certain DIO channel using address masking                                  
+*                                                                             
+* \Sync\Async      : Synchronous                                               
+* \Reentrancy      : Reentrant                                             
+* \Parameters (in) : ChannelId                     
+* \Parameters (out): None                                                      
+* \Return value:   : Dio_LevelType
+*******************************************************************************/
+Dio_LevelType Dio_ReadChannelMasked(Dio_ChannelType ChannelId);
+
+/******************************************************************************
+* \Syntax          : void Dio_WriteChannelMasked(Dio_ChannelType ChannelId, Dio_LevelType Level)                                      
+* \Description     : write to a certain DIO channel using address masking                                  
+*                                                                             
+* \Sync\Async      : Synchronous                                               
+* \Reentrancy      : Reentrant                                             
+* \Parameters (in) : ChannelId, Level                     
+* \Parameters (out): None                                                      
+* \Return value:   : None
+*******************************************************************************/
+void Dio_WriteChannelMasked(Dio_ChannelType ChannelId, Dio_LevelType Level);
+
+/******************************************************************************
 * \Syntax          : Dio_PortLevelType Dio_ReadPort(Dio_PortType PortId)                                      
 * \Description     : read a certain Port                                   
 *                                                                             

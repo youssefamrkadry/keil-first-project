@@ -27,6 +27,9 @@
  *********************************************************************************************************************/
 
 // {Dio_ChannelType channel, Port_PinDirectionType direction, Port_PinInternalAttachType internal_attach, Port_PinOutputCurrentType output_current}
+// Default direction is IN
+// Default attatchment is TRISTATE
+// Default current is CURRENT_2MA
 Port_ConfigType port_configs[] = {
     {B6, Mode_DIO, IN, PULL_UP, CURRENT_2MA},
     {B7, Mode_DIO, OUT, TRISTATE, CURRENT_2MA}
