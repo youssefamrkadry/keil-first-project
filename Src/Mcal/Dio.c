@@ -22,7 +22,7 @@
  *  LOCAL DATA 
  *********************************************************************************************************************/
 #define GPIO_BASE_ADDRESS_AHB_PORT(port)          ((GPIO_BASE_ADDRESS_AHB)+((0x1000)*(port)))
-#define GPIODATA_PORT(port)                       (*((volatile uint32*)(GPIO_BASE_ADDRESS_AHB_PORT(port))))
+#define GPIODATA_PORT(port)                       (*((volatile uint32*)((GPIO_BASE_ADDRESS_AHB_PORT(port)) + ((0xFF)<<2))))
 #define GPIODATA_MSK_PORT(port, bit)              (*((volatile uint32*)((GPIO_BASE_ADDRESS_AHB_PORT(port)) + ((1<<bit)<<2))))
 
 /**********************************************************************************************************************

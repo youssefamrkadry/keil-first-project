@@ -23,7 +23,6 @@
  *  LOCAL DATA 
  *********************************************************************************************************************/
 #define GPIO_BASE_ADDRESS_AHB_PORT(port)          ((GPIO_BASE_ADDRESS_AHB)+((0x1000)*port))
-#define GPIODATA_PORT(port)                       (*((volatile uint32*)(GPIO_BASE_ADDRESS_AHB_PORT(port))))
 #define GPIOLOCK_PORT(port)                       (*((volatile uint32*)((GPIO_BASE_ADDRESS_AHB_PORT(port))+0x520)))
 #define GPIOCR_PORT(port)                         (*((volatile uint32*)((GPIO_BASE_ADDRESS_AHB_PORT(port))+0x524)))
 #define GPIODEN_PORT(port)                        (*((volatile uint32*)((GPIO_BASE_ADDRESS_AHB_PORT(port))+0x51C)))
@@ -43,7 +42,7 @@
 /**********************************************************************************************************************
  *  LOCAL FUNCTION PROTOTYPES
  *********************************************************************************************************************/
-static void CommitRegisterChange(uint8 port, uint8 pin);
+static void CommitRegisterChange(uint8 port);
 static void EnableDigitalPin(Dio_ChannelType channel);
 static void DisableDigitalPin(Dio_ChannelType channel);
 static void SetPinMode(Dio_ChannelType channel, Port_PinModeType mode);
