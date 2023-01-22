@@ -39,7 +39,7 @@ typedef struct
 }IntCtrl_Interrupt_st;
 
 extern IntCtrl_Interrupt_st interrupt_table_cfg[];
-extern int interrupts_number;
+extern uint8 interrupts_number;
 
 #endif  /* INTCTRL_CFG_H */
 

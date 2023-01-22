@@ -30,6 +30,13 @@
  *  GLOBAL DATA TYPES AND STRUCTURES
  *********************************************************************************************************************/
 
+typedef enum
+{
+    PORTA, PORTB, PORTC, PORTD, PORTE, PORTF
+}Dio_PortType;
+
+typedef uint8 Dio_PortLevelType;
+
 // You can perform %10 to get the bit and /10 to get the PortType
 typedef enum
 {
@@ -45,13 +52,6 @@ typedef enum
 {
     LOW, HIGH
 }Dio_LevelType;
-
-typedef enum
-{
-    PORTA, PORTB, PORTC, PORTD, PORTE, PORTF
-}Dio_PortType;
-
-typedef uint8 Dio_PortLevelType;
 
 /**********************************************************************************************************************
  *  GLOBAL DATA PROTOTYPES
