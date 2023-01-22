@@ -30,13 +30,14 @@
 typedef struct
 {
     Dio_ChannelType channel;
+    Port_PinModeType mode;
     Port_PinDirectionType direction;
     Port_PinInternalAttachType internal_attach;
     Port_PinOutputCurrentType output_current;
 }Port_ConfigType;
 
 extern Port_ConfigType port_configs[];
-extern uint8 ports_number;
+extern uint8 pins_number;
 
 #endif  /* PORT_CFG_H */
 

@@ -61,12 +61,12 @@ typedef enum
 
 typedef enum
 {
-    PULL_UP, PULL_DOWN, NO_ATTACH
+    PULL_UP, PULL_DOWN, TRISTATE
 }Port_PinInternalAttachType;
 
 typedef enum
 {
-    CURRENT_0MA, CURRENT_2MA, CURRENT_4MA, CURRENT_8MA
+    CURRENT_2MA, CURRENT_4MA, CURRENT_8MA
 }Port_PinOutputCurrentType;
 
 // Corresponds to the value written in GPIOPCTL PMCx bit field denoting the digital alternate function

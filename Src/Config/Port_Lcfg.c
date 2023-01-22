@@ -28,11 +28,11 @@
 
 // {Dio_ChannelType channel, Port_PinDirectionType direction, Port_PinInternalAttachType internal_attach, Port_PinOutputCurrentType output_current}
 Port_ConfigType port_configs[] = {
-    {B6, IN, PULL_UP, CURRENT_0MA},
-    {B7, OUT, NO_ATTACH, CURRENT_2MA}
+    {B6, Mode_DIO, IN, PULL_UP, CURRENT_2MA},
+    {B7, Mode_DIO, OUT, TRISTATE, CURRENT_2MA}
     };
 
-uint8 ports_number = sizeof(port_configs) / sizeof(Port_ConfigType);
+uint8 pins_number = sizeof(port_configs) / sizeof(Port_ConfigType);
 
 /**********************************************************************************************************************
  *  END OF FILE: Port_Lcfg.c
