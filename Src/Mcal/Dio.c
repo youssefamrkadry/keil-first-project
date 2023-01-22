@@ -24,7 +24,6 @@
 #define GPIO_BASE_ADDRESS_AHB_PORT(i)          ((GPIO_BASE_ADDRESS_AHB)+((0x1000)*i))
 #define GPIODATA_PORT(i)                       (*((volatile uint32*)(GPIO_BASE_ADDRESS_AHB_PORT(i))))
 #define GPIODATA_MSK_PORT(port, bit)           (*((volatile uint32*)((GPIO_BASE_ADDRESS_AHB_PORT(port)) + ((1<<bit)<<2))))
-#define GPIODIR_PORT(i)                        (*((volatile uint32*)((GPIO_BASE_ADDRESS_AHB_PORT(i))+0x400)))
 
 /**********************************************************************************************************************
  *  GLOBAL DATA
