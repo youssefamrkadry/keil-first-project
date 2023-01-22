@@ -43,6 +43,7 @@
  *  LOCAL FUNCTION PROTOTYPES
  *********************************************************************************************************************/
 static void CommitRegisterChange(uint8 port);
+static void InitPortClock(Dio_ChannelType channel);
 static void EnableDigitalPin(Dio_ChannelType channel);
 static void DisableDigitalPin(Dio_ChannelType channel);
 static void SetPinMode(Dio_ChannelType channel, Port_PinModeType mode);
@@ -53,6 +54,22 @@ static void SetOutputCurrent(Dio_ChannelType channel, Port_PinOutputCurrentType 
 /**********************************************************************************************************************
  *  LOCAL FUNCTIONS
  *********************************************************************************************************************/
+
+/******************************************************************************
+* \Syntax          : void InitPortClock(Dio_ChannelType channel)                                      
+* \Description     : enable and provide a clock to GPIO Ports in Run mode                          
+*                                                                             
+* \Sync\Async      : Synchronous                                               
+* \Reentrancy      : Non Reentrant                                             
+* \Parameters (in) : channel                     
+* \Parameters (out): None                                                      
+* \Return value:   : None
+*******************************************************************************/
+static void InitPortClock(Dio_ChannelType channel)
+{
+    uint8 port = channel / 10;
+    RCGCGPIO |= (1<<port);
+}
 
 /******************************************************************************
 * \Syntax          : void CommitRegisterChange(uint8 port)                                      
@@ -254,8 +271,9 @@ void Port_Init(void)
     
     for (u8_idx = 0; u8_idx < pins_number; u8_idx++)
     {
-        SetPinMode(port_configs[u8_idx].channel, port_configs[u8_idx].mode);
+        InitPortClock(port_configs[u8_idx].channel);
         SetPinDirection(port_configs[u8_idx].channel, port_configs[u8_idx].direction);
+        SetPinMode(port_configs[u8_idx].channel, port_configs[u8_idx].mode);
         SetInternalAttatch(port_configs[u8_idx].channel, port_configs[u8_idx].internal_attach);
         SetOutputCurrent(port_configs[u8_idx].channel, port_configs[u8_idx].output_current);
         EnableDigitalPin(port_configs[u8_idx].channel);

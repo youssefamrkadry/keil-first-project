@@ -55,6 +55,9 @@ typedef union
 
 #define GPIO_BASE_ADDRESS_AHB                  0x40058000
 
+#define SYS_CTRL_BASE_ADDRESS                  0x400FE000
+#define RCGCGPIO                               *((volatile uint32*)(SYS_CTRL_BASE_ADDRESS+0x608))
+
 /**********************************************************************************************************************
  *  GLOBAL DATA PROTOTYPES
  *********************************************************************************************************************/
