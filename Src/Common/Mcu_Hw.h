@@ -95,16 +95,16 @@ typedef union
  *  GLOBAL CONSTANT MACROS
  *********************************************************************************************************************/
 #define CORTEXM4_PERI_BASE_ADDRESS             0xE000E000
-#define APINT                                  *((volatile uint32*)(CORTEXM4_PERI_BASE_ADDRESS+0xD0C))
-#define INTCTRL                                *((volatile INTCTRL_Tag*)(CORTEXM4_PERI_BASE_ADDRESS+0xD04))
+#define APINT                                  (*((volatile uint32*)(CORTEXM4_PERI_BASE_ADDRESS+0xD0C)))
+#define INTCTRL                                (*((volatile INTCTRL_Tag*)(CORTEXM4_PERI_BASE_ADDRESS+0xD04)))
 // Example: INTCTRL.R if want to access full register, INTCTRL.B.VECPEND = write 4 bits
 
 #define GPIO_BASE_ADDRESS_AHB                  0x40058000
 
 #define SYS_CTRL_BASE_ADDRESS                  0x400FE000
-#define RCC                                    *((volatile RCC_Tag*)(SYS_CTRL_BASE_ADDRESS+0x060))
-#define RCC2                                   *((volatile RCC2_Tag*)(SYS_CTRL_BASE_ADDRESS+0x070))
-#define RCGCGPIO                               *((volatile uint32*)(SYS_CTRL_BASE_ADDRESS+0x608))
+#define RCC                                    (*((volatile RCC_Tag*)(SYS_CTRL_BASE_ADDRESS+0x060)))
+#define RCC2                                   (*((volatile RCC2_Tag*)(SYS_CTRL_BASE_ADDRESS+0x070)))
+#define RCGCGPIO                               (*((volatile uint32*)(SYS_CTRL_BASE_ADDRESS+0x608)))
 
 /**********************************************************************************************************************
  *  GLOBAL DATA PROTOTYPES
