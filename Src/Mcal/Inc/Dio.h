@@ -65,6 +65,19 @@ Dio_LevelType Dio_ReadChannel(Dio_ChannelType ChannelId);
 void Dio_WriteChannel(Dio_ChannelType ChannelId, Dio_LevelType Level);
 
 /******************************************************************************
+* \Syntax          : void Dio_ToggleChannel(Dio_ChannelType ChannelId)                                      
+* \Description     : toggle a certain DIO channel                                   
+*                                                                             
+* \Sync\Async      : Synchronous                                               
+* \Reentrancy      : Reentrant                                             
+* \Parameters (in) : ChannelId                  
+* \Parameters (out): None                                                      
+* \Return value:   : None
+*******************************************************************************/
+void Dio_ToggleChannel(Dio_ChannelType ChannelId);
+
+
+/******************************************************************************
 * \Syntax          : Dio_LevelType Dio_ReadChannelMasked(Dio_ChannelType ChannelId)                                      
 * \Description     : read a certain DIO channel using address masking                                  
 *                                                                             

@@ -31,9 +31,9 @@
 // Default attatchment is TRISTATE
 // Default current is CURRENT_2MA
 Port_ConfigType port_configs[] = {
-    {B5, Mode_DIO, IN, PULL_UP, CURRENT_2MA},
-    {B6, Mode_DIO, OUT, TRISTATE, CURRENT_2MA},
-    {B7, Mode_DIO, OUT, TRISTATE, CURRENT_2MA}
+    {B4, Mode_DIO, OUT, TRISTATE, CURRENT_2MA},
+    {B5, Mode_DIO, IN, PULL_DOWN, CURRENT_2MA},
+    {B6, Mode_DIO, IN, PULL_DOWN, CURRENT_2MA}
     };
 
 uint8 pins_number = sizeof(port_configs) / sizeof(Port_ConfigType);

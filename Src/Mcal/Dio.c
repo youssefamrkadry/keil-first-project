@@ -85,6 +85,24 @@ void Dio_WriteChannel(Dio_ChannelType ChannelId, Dio_LevelType Level)
 }
 
 /******************************************************************************
+* \Syntax          : void Dio_ToggleChannel(Dio_ChannelType ChannelId)                                      
+* \Description     : toggle a certain DIO channel                                   
+*                                                                             
+* \Sync\Async      : Synchronous                                               
+* \Reentrancy      : Reentrant                                             
+* \Parameters (in) : ChannelId                  
+* \Parameters (out): None                                                      
+* \Return value:   : None
+*******************************************************************************/
+void Dio_ToggleChannel(Dio_ChannelType ChannelId)
+{
+    uint8 bit = ChannelId % 10;
+    uint8 port = ChannelId / 10;
+
+    GPIODATA_PORT(port) ^= (1<<bit);
+}
+
+/******************************************************************************
 * \Syntax          : Dio_LevelType Dio_ReadChannelMasked(Dio_ChannelType ChannelId)                                      
 * \Description     : read a certain DIO channel using address masking                                   
 *                                                                             
