@@ -97,6 +97,9 @@ typedef union
 #define CORTEXM4_PERI_BASE_ADDRESS             0xE000E000
 #define APINT                                  (*((volatile uint32*)(CORTEXM4_PERI_BASE_ADDRESS+0xD0C)))
 #define INTCTRL                                (*((volatile INTCTRL_Tag*)(CORTEXM4_PERI_BASE_ADDRESS+0xD04)))
+#define STCTRL                                 (*((volatile uint32*)(CORTEXM4_PERI_BASE_ADDRESS+0x010)))
+#define STRELOAD                               (*((volatile uint32*)(CORTEXM4_PERI_BASE_ADDRESS+0x014)))
+#define STCURRENT                              (*((volatile uint32*)(CORTEXM4_PERI_BASE_ADDRESS+0x018)))
 // Example: INTCTRL.R if want to access full register, INTCTRL.B.VECPEND = write 4 bits
 
 #define GPIO_BASE_ADDRESS_AHB                  0x40058000
