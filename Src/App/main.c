@@ -46,7 +46,7 @@ int main(void)
 
     SysTick_RegisterInterruptCallback(handle_SysTickInterrupt);
 
-    SysTick_InterruptCountdown(off_seconds*1000);
+    SysTick_InterruptCountdown(1000);
     SysTick_Start();
 
     while (1)
