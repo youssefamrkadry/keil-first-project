@@ -31,7 +31,7 @@
  *********************************************************************************************************************/
 typedef enum
 {
-   SYSCTL_SYSDIV_1,
+   SYSCTL_SYSDIV_1 = 1,
    SYSCTL_SYSDIV_2,
    SYSCTL_SYSDIV_3,
    SYSCTL_SYSDIV_4,

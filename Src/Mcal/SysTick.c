@@ -76,22 +76,22 @@ void SysTick_InterruptCountdown(uint32 countdown_ms)
     switch (CLK_XTAL)
     {
     case XTAL_5:
-        reload_value = (5000*countdown_ms) - 1;
+        reload_value = ((5000/CLK_SYSDIV)*countdown_ms) - 1;
         break;
     case XTAL_6:
-        reload_value = (6000*countdown_ms) - 1;
+        reload_value = ((6000/CLK_SYSDIV)*countdown_ms) - 1;
         break;
     case XTAL_8:
-        reload_value = (8000*countdown_ms) - 1;
+        reload_value = ((8000/CLK_SYSDIV)*countdown_ms) - 1;
         break;
     case XTAL_10:
-        reload_value = (10000*countdown_ms) - 1;
+        reload_value = ((10000/CLK_SYSDIV)*countdown_ms) - 1;
         break;
     case XTAL_12:
-        reload_value = (12000*countdown_ms) - 1;
+        reload_value = ((12000/CLK_SYSDIV)*countdown_ms) - 1;
         break;
     case XTAL_16:
-        reload_value = (16000*countdown_ms) - 1;
+        reload_value = ((16000/CLK_SYSDIV)*countdown_ms) - 1;
         break;
     default:
         reload_value = 0;
