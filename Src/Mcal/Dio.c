@@ -21,9 +21,12 @@
 /**********************************************************************************************************************
  *  LOCAL DATA 
  *********************************************************************************************************************/
-#define GPIO_BASE_ADDRESS_AHB_PORT(port)          ((GPIO_BASE_ADDRESS_AHB)+((0x1000)*(port)))
-#define GPIODATA_PORT(port)                       (*((volatile uint32*)((GPIO_BASE_ADDRESS_AHB_PORT(port)) + ((0xFF)<<2))))
-#define GPIODATA_MSK_PORT(port, bit)              (*((volatile uint32*)((GPIO_BASE_ADDRESS_AHB_PORT(port)) + ((1<<bit)<<2))))
+// #define GPIO_BASE_ADDRESS_PORT(port)          ((GPIO_BASE_ADDRESS_AHB)+((0x1000)*(port)))
+#define GPIO_BASE_ADDRESS_PORT(port)          (port<4? ((GPIO_BASE_ADDRESS_APB)+((0x1000)*(port))) : ((GPIO_BASE_ADDRESS_APB+0x20000)+((0x1000)*(port-4))))
+// Comment one of them to choose between AHB and APB
+
+#define GPIODATA_PORT(port)                       (*((volatile uint32*)((GPIO_BASE_ADDRESS_PORT(port)) + ((0xFF)<<2))))
+#define GPIODATA_MSK_PORT(port, bit)              (*((volatile uint32*)((GPIO_BASE_ADDRESS_PORT(port)) + ((1<<bit)<<2))))
 
 /**********************************************************************************************************************
  *  GLOBAL DATA

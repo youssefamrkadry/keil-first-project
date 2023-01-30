@@ -5,30 +5,36 @@
 #include "../Mcal/Inc/SysTick.h"
 
 
-uint8 on_seconds = 1;
-uint8 off_seconds = 1;
+volatile uint8 on_seconds = 1;
+volatile uint8 off_seconds = 1;
 uint8 unconfirmed_value = 1;
 
-uint8 current_led_status = 0;
+volatile uint8 current_led_status = 0;
+volatile uint8 second_countdown = 1;
 
-const Dio_ChannelType led = B4;
-const Dio_ChannelType increment_pb = B5;
-const Dio_ChannelType confirmation_pb = B6;
+const Dio_ChannelType led = F3;
+const Dio_ChannelType increment_pb = F4;
+const Dio_ChannelType confirmation_pb = F0;
 
 void handle_SysTickInterrupt(void)
 {
-    if (current_led_status == 0)
+    second_countdown -= 1;
+    if (second_countdown == 0)
     {
-        Dio_WriteChannel(led, HIGH);
-        current_led_status = 1;
-        SysTick_InterruptCountdown(off_seconds*1000);
+        if (current_led_status == 0)
+        {
+            Dio_WriteChannel(led, HIGH);
+            current_led_status = 1;
+            second_countdown = on_seconds;
+        }
+        else
+        {
+            Dio_WriteChannel(led, LOW);
+            current_led_status = 0;
+            second_countdown = off_seconds;
+        }
     }
-    else
-    {
-        Dio_WriteChannel(led, LOW);
-        current_led_status = 0;
-        SysTick_InterruptCountdown(on_seconds*1000);
-    }
+    SysTick_InterruptCountdown(1000);
 }
 
 
@@ -45,12 +51,12 @@ int main(void)
 
     while (1)
     {
-        if (Dio_ReadChannel(increment_pb) == HIGH)
+        if (Dio_ReadChannel(increment_pb) == LOW)
         {
             unconfirmed_value+=1;
-            while(Dio_ReadChannel(increment_pb) == HIGH);
+            while(Dio_ReadChannel(increment_pb) == LOW);
         }
-        else if (Dio_ReadChannel(confirmation_pb) == HIGH)
+        else if (Dio_ReadChannel(confirmation_pb) == LOW)
         {
             if (current_led_status == 0)
             {
@@ -62,7 +68,7 @@ int main(void)
             }
 
             unconfirmed_value = 1;
-            while(Dio_ReadChannel(confirmation_pb) == HIGH);
+            while(Dio_ReadChannel(confirmation_pb) == LOW);
         }
     }
     return 0;

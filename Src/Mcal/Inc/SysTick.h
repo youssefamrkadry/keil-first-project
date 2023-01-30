@@ -75,7 +75,7 @@ void SysTick_InterruptCountdown(uint32 countdown_ms);
 * \Parameters (out): None                                                      
 * \Return value:   : None
 *******************************************************************************/
-void SysTick_RegisterInterruptCallback(cb_type *ptr);
+void SysTick_RegisterInterruptCallback(cb_type ptr);
  
 #endif  /* IntCrtl_H */
 

@@ -89,6 +89,32 @@ typedef union
     RCC2_BF B; // Bit
 }RCC2_Tag;
 
+typedef struct 
+{
+    uint32 MEMA        :1;
+    uint32 BUSA        :1;
+    uint32             :1;
+    uint32 USGA        :1;
+    uint32             :3;
+    uint32 SVCA        :1;
+    uint32 MON         :1;
+    uint32             :1;
+    uint32 PNDSV       :1;
+    uint32 TICK        :1;
+    uint32 USAGEP      :1;
+    uint32 MEMP        :1;
+    uint32 BUSP        :1;
+    uint32 SVC         :1;
+    uint32 MEM         :1;
+    uint32 BUS         :1;
+    uint32 USAGE       :1;
+    uint32             :13;
+}SYSHNDCTRL_BF;
+typedef union 
+{
+    uint32 R; // Register
+    SYSHNDCTRL_BF B; // Bit
+}SYSHNDCTRL_Tag;
 
 
 /**********************************************************************************************************************
@@ -97,11 +123,13 @@ typedef union
 #define CORTEXM4_PERI_BASE_ADDRESS             0xE000E000
 #define APINT                                  (*((volatile uint32*)(CORTEXM4_PERI_BASE_ADDRESS+0xD0C)))
 #define INTCTRL                                (*((volatile INTCTRL_Tag*)(CORTEXM4_PERI_BASE_ADDRESS+0xD04)))
+#define SYSHNDCTRL                             (*((volatile SYSHNDCTRL_Tag*)(CORTEXM4_PERI_BASE_ADDRESS+0xD24)))
 #define STCTRL                                 (*((volatile uint32*)(CORTEXM4_PERI_BASE_ADDRESS+0x010)))
 #define STRELOAD                               (*((volatile uint32*)(CORTEXM4_PERI_BASE_ADDRESS+0x014)))
 #define STCURRENT                              (*((volatile uint32*)(CORTEXM4_PERI_BASE_ADDRESS+0x018)))
 // Example: INTCTRL.R if want to access full register, INTCTRL.B.VECPEND = write 4 bits
 
+#define GPIO_BASE_ADDRESS_APB                  0x40004000
 #define GPIO_BASE_ADDRESS_AHB                  0x40058000
 
 #define SYS_CTRL_BASE_ADDRESS                  0x400FE000

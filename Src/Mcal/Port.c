@@ -22,18 +22,21 @@
 /**********************************************************************************************************************
  *  LOCAL DATA 
  *********************************************************************************************************************/
-#define GPIO_BASE_ADDRESS_AHB_PORT(port)          ((GPIO_BASE_ADDRESS_AHB)+((0x1000)*port))
-#define GPIOLOCK_PORT(port)                       (*((volatile uint32*)((GPIO_BASE_ADDRESS_AHB_PORT(port))+0x520)))
-#define GPIOCR_PORT(port)                         (*((volatile uint32*)((GPIO_BASE_ADDRESS_AHB_PORT(port))+0x524)))
-#define GPIODEN_PORT(port)                        (*((volatile uint32*)((GPIO_BASE_ADDRESS_AHB_PORT(port))+0x51C)))
-#define GPIOAFSEL_PORT(port)                      (*((volatile uint32*)((GPIO_BASE_ADDRESS_AHB_PORT(port))+0x420)))
-#define GPIOPCTL_PORT(port)                       (*((volatile uint32*)((GPIO_BASE_ADDRESS_AHB_PORT(port))+0x52C)))
-#define GPIODIR_PORT(port)                        (*((volatile uint32*)((GPIO_BASE_ADDRESS_AHB_PORT(port))+0x400)))
-#define GPIOPUR_PORT(port)                        (*((volatile uint32*)((GPIO_BASE_ADDRESS_AHB_PORT(port))+0x510)))
-#define GPIOPDR_PORT(port)                        (*((volatile uint32*)((GPIO_BASE_ADDRESS_AHB_PORT(port))+0x514)))
-#define GPIODR2R_PORT(port)                       (*((volatile uint32*)((GPIO_BASE_ADDRESS_AHB_PORT(port))+0x500)))
-#define GPIODR4R_PORT(port)                       (*((volatile uint32*)((GPIO_BASE_ADDRESS_AHB_PORT(port))+0x504)))
-#define GPIODR8R_PORT(port)                       (*((volatile uint32*)((GPIO_BASE_ADDRESS_AHB_PORT(port))+0x508)))
+// #define GPIO_BASE_ADDRESS_PORT(port)          ((GPIO_BASE_ADDRESS_AHB)+((0x1000)*port))
+#define GPIO_BASE_ADDRESS_PORT(port)          (port<4? ((GPIO_BASE_ADDRESS_APB)+((0x1000)*(port))) : ((GPIO_BASE_ADDRESS_APB+0x20000)+((0x1000)*(port-4))))
+// Comment one of them to choose between AHB and APB
+
+#define GPIOLOCK_PORT(port)                       (*((volatile uint32*)((GPIO_BASE_ADDRESS_PORT(port))+0x520)))
+#define GPIOCR_PORT(port)                         (*((volatile uint32*)((GPIO_BASE_ADDRESS_PORT(port))+0x524)))
+#define GPIODEN_PORT(port)                        (*((volatile uint32*)((GPIO_BASE_ADDRESS_PORT(port))+0x51C)))
+#define GPIOAFSEL_PORT(port)                      (*((volatile uint32*)((GPIO_BASE_ADDRESS_PORT(port))+0x420)))
+#define GPIOPCTL_PORT(port)                       (*((volatile uint32*)((GPIO_BASE_ADDRESS_PORT(port))+0x52C)))
+#define GPIODIR_PORT(port)                        (*((volatile uint32*)((GPIO_BASE_ADDRESS_PORT(port))+0x400)))
+#define GPIOPUR_PORT(port)                        (*((volatile uint32*)((GPIO_BASE_ADDRESS_PORT(port))+0x510)))
+#define GPIOPDR_PORT(port)                        (*((volatile uint32*)((GPIO_BASE_ADDRESS_PORT(port))+0x514)))
+#define GPIODR2R_PORT(port)                       (*((volatile uint32*)((GPIO_BASE_ADDRESS_PORT(port))+0x500)))
+#define GPIODR4R_PORT(port)                       (*((volatile uint32*)((GPIO_BASE_ADDRESS_PORT(port))+0x504)))
+#define GPIODR8R_PORT(port)                       (*((volatile uint32*)((GPIO_BASE_ADDRESS_PORT(port))+0x508)))
 
 /**********************************************************************************************************************
  *  GLOBAL DATA
